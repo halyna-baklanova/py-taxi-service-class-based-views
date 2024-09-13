@@ -33,6 +33,9 @@ class DriverListView(generic.ListView):
     paginate_by = 5
     template_name = "taxi/driver_list.html"
 
+    def get_queryset(self):
+        return Driver.objects.all().order_by("last_name")
+
 
 class DriverDetailView(generic.DetailView):
     model = Driver
